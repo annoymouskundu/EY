@@ -1,0 +1,78 @@
+/* Styling for the cart container */
+.cart-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Initially hide the cart dialog */
+.cart-dialog {
+    position: absolute;
+    top: 60px; /* Adjusted for larger dialog box */
+    left: 50%; /* Center-align it horizontally */
+    transform: translateX(-50%);
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Subtle gradient background */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Softer border */
+    border-radius: 9.6px; /* Increased by 20% */
+    padding: 18px; /* Increased by 20% */
+    display: none; /* Initially hidden */
+    box-shadow: 0 4.8px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    width: 300px; /* Increased by 20% */
+    text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px); /* Adjusted for animation effect */
+}
+
+/* Icon styling */
+.cart-container .nav-link {
+    margin-left: 33px; /* Adjusted for larger icon */
+    font-size: 19.8px; /* Increased by 10% */
+    color: #333;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.cart-container .nav-link:hover {
+    color: #007bff; /* Highlighted blue on hover */
+}
+
+/* Content within the cart dialog */
+.cart-dialog h5 {
+    font-size: 21.6px; /* Increased by 20% */
+    margin-bottom: 12px; /* Increased margin */
+    font-weight: bold; /* Make headings stand out */
+    color: #333;
+}
+
+.cart-dialog p {
+    font-size: 16.8px; /* Increased by 20% */
+    color: #555;
+    margin-bottom: 12px; /* Increased margin */
+}
+
+.cart-dialog button {
+    background: linear-gradient(145deg, #34c759, #28a745); /* Gradient green button */
+    color: white;
+    border: none;
+    border-radius: 28px; /* More rounded for a modern look */
+    padding: 12px 24px; /* Increased padding for larger button */
+    cursor: pointer;
+    font-size: 18px; /* Slightly larger font size */
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Deeper shadow for emphasis */
+    transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; /* Smoother transitions */
+}
+
+.cart-dialog button:hover {
+    background: linear-gradient(145deg, #28a745, #1e7e34); /* Darker gradient on hover */
+    transform: scale(0.8); /* Magnify effect increased */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+/* Show the cart dialog with a smooth fade-in effect */
+.cart-container:hover .cart-dialog {
+    display: block;
+    opacity: 1; /* Fully visible */
+    transform: translateX(-50%) translateY(0); /* Smooth slide-in effect */
+    transition: opacity 0.4s ease, transform 0.4s ease; /* Smoother transitions */
+}
+

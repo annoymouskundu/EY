@@ -1,0 +1,37 @@
+/* Styling for the search container */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Initially hide the search dialog */
+.search-dialog {
+    position: absolute;
+    top: 39px;  /* Adjust this value to move the dialog box below the search icon */
+    left: 50%; /* Center align it horizontally */
+    transform: translateX(-50%); /* Adjust position back by half its width */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    display: none;  /* Initially hidden */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input styling */
+.search-dialog input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    outline: none;
+}
+
+.search-dialog input:focus {
+    border-color: #007bff;
+}
+
+/* Spacing between search and cart icons */
+.nav-link {
+    margin-left: 30px; /* Adjust spacing as needed */
+}

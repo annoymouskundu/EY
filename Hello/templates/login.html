@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login {% endblock title %}
+
+{% block body %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'styles/login_page.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="wave"></div>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+                <div class="input-box">
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="register-link">Don't have an account? <a href="/register">Register here</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        // script.js
+// Add interactivity (optional, for expanding future features)
+document.querySelector('.btn').addEventListener('click', (event) => {
+    event.preventDefault();
+    alert('Login functionality coming soon!');
+});
+
+    </script>
+</body>
+</html>
+
+{% endblock body %}
+
+

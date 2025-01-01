@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+{% block title %}Support{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Support</title>
+    <link rel="stylesheet" href="{% static 'styles/support.css' %}">
+</head>
+<body>
+    <div class="header-grid">
+        <img src="{% static 'img/kawasaki-ninja-400-right-side-view36.jpeg' %}" alt="Kawasaki Ninja 400">
+        <img src="{% static 'img/fastest-motorcycles-ranking-top-speed-list-luxe-digital.jpg' %}" alt="Motorcycle">
+        <img src="{% static 'img/shutterstock-455852776-compressor-motorcycle-repair-and-services-10-6w7su.jpg' %}" alt="Person 3">
+        <img src="{% static 'img/kawasaki-z900-left-front-three-quarter9.jpeg' %}" alt="Person 3">
+    </div>
+    <h1 class="support-title">ReArc Support</h1>
+    <div class="icon-row">
+        <!-- Icons here -->
+    </div>
+    <div class="action-buttons">
+        <!-- Action buttons here -->
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search Support">
+        <button>Search</button>
+    </div>
+</body>
+</html>
+
+
+{% endblock body %}
+

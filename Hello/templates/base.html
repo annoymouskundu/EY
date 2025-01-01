@@ -1,0 +1,203 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="{% static 'styles/search_dialog.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/cart.css' %}">
+        <script src="{% static 'js/searchscript.js' %}" defer></script>
+        <script src="{% static 'js/cart.js' %}" defer></script>
+        <title>{% block title %}Home{% endblock title %}</title>
+        <style>
+            /* Custom styling for the bike icon */
+            .custom-bike-icon {
+                margin-right: 35px; /* Adjust horizontal spacing */
+                position: relative; /* Allows fine-tuning with top, bottom, left, right */
+                top: 0px; /* Moves the icon slightly downward */
+                color: white; /* Example: change the color */
+                font-size: 18px; /* Adjust the size of the icon */
+            }
+
+            /* Dropdown container */
+            .search-container {
+                position: relative;
+                display: inline-block;
+            }
+
+            .search-dropdown {
+                display: none;
+                position: fixed; /* Keeps the dropdown fixed on the screen */
+                top: 55px;
+                left: 0px;
+                width: 100%;  /* Adjust the width of the dropdown */
+                height: 30%; /* Adjust the height of the dropdown */
+                background-color: rgb(255, 255, 255); /* white */
+                z-index: 999; /* Ensure it stays on top */
+                padding: 10px 30px; /* Reduced padding inside the dropdown */
+                box-sizing: border-box; /* Ensures padding doesn't affect the width/height calculation */
+            }
+
+            /* Flex container for search box and icon */
+            .search-input-container {
+                display: flex;
+                align-items: center; /* Vertically center the items */
+                width: 70%;
+                padding: 10px;
+                border: 0px hidden #ccc;
+                border-radius: 4px;
+            }
+
+            /* Search icon in front of input */
+            .search-input-container .search-icon {
+                margin-right: 5px;
+                color: #ccc;
+            }
+
+            /* Search box inside dropdown */
+            .search-dropdown input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                font-size: 16px;
+                border-radius: 4px;
+                margin-left: 5px;
+            }
+
+             /* Remove the outline when the input is focused */
+             .search-dropdown input[type="text"]:focus {
+                outline: none;
+             }
+
+            /* Quick links in dropdown */
+            .search-dropdown h5 {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .search-dropdown ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .search-dropdown ul li {
+                margin: 8px 0;
+            }
+
+            .search-dropdown ul li a {
+                text-decoration: none;
+                font-size: 16px;
+                color: #000000;
+            }
+
+            .search-dropdown ul li a:hover {
+                color: #000000;
+            }
+
+            /* Show dropdown on hover */
+            .search-container:hover .search-dropdown {
+                display: block;
+            }
+        </style>
+
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <!-- Navbar toggle for small screens -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="{% url 'home' %}">
+                                <i class="fas fa-bicycle custom-bike-icon"></i> Store
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bikes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Batteries</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Accessories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'services' %}">Support</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search and Cart icons -->
+                    <div class="d-flex custom-icons-spacing">
+                        <!-- Search Icon -->
+                        <div class="search-container">
+                            <a href="#" class="nav-link text-light" id="search-icon">
+                                <i class="fas fa-search"></i>
+                            </a>
+                            <!-- Search Dropdown -->
+                            <div class="search-dropdown">
+                                <div class="search-input-container">
+                                    <i class="fas fa-search search-icon"></i>
+                                    <input type="text" placeholder="Search...">
+                                </div>
+                                <h5>Quick Links</h5>
+                                <ul>
+                                    <li><a href="#">Find a Store</a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Batteries</a></li>
+                                    <li><a href="#">Electric Bikes</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Shopping Bag Icon -->
+                        <div class="cart-container">
+                            <a href="#" class="nav-link text-light">
+                                <i class="fas fa-shopping-bag"></i>
+                            </a>
+                            <div class="cart-dialog">
+                                <h5>Your Cart (0)</h5>
+                                <p>
+                                    <a href="{% url 'login' %}" style="color: blue; text-decoration: none;">Sign</a> in to synchronize your shopping cart
+                                </p>
+                                <div>
+                                    <i class="fas fa-shopping-bag fa-3x text-muted"></i>
+                                    <p>NOTHING. YET.</p>
+                                    <button>Go shopping</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        {% block body %}{% endblock body %}
+
+        <!-- JS for Dropdown -->
+        <script>
+            document.getElementById("search-icon").addEventListener("click", function(event) {
+                const dropdown = document.querySelector(".search-dropdown");
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+                event.stopPropagation();
+            });
+
+            document.addEventListener("click", function(event) {
+                const dropdown = document.querySelector(".search-dropdown");
+                const searchContainer = document.querySelector(".search-container");
+                if (!searchContainer.contains(event.target)) {
+                    dropdown.style.display = "none";
+                }
+            });
+        </script>
+    </body>
+</html>
