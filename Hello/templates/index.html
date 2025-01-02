@@ -42,13 +42,6 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <button id="start-recording">🎤</button> <!-- Mic button -->
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
 
@@ -72,52 +65,7 @@
     <!-- Bootstrap JS (Optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        // Get DOM elements
-        const micButton = document.getElementById('start-recording');
-        const speechDialog = document.getElementById('speech-dialog');
-        const statusDiv = document.getElementById('status');
-        const transcriptionDiv = document.getElementById('transcription');
-
-        // Initialize SpeechRecognition API (Web Speech API)
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.continuous = true;  // Keeps listening until stopped
-        recognition.interimResults = true;  // Show partial results
-
-        micButton.addEventListener('click', function () {
-            // Show the dialog box
-            speechDialog.style.display = 'block';
-            statusDiv.textContent = 'Listening...';
-
-            // Start speech recognition
-            recognition.start();
-        });
-
-        recognition.onresult = function (event) {
-            let transcript = '';
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                transcript += event.results[i][0].transcript;
-            }
-
-            // Update the transcription text in the dialog box
-            transcriptionDiv.textContent = transcript;
-
-            // Optionally, handle final results
-            if (event.results[0].isFinal) {
-                statusDiv.textContent = 'Done listening';
-            }
-        };
-
-        recognition.onerror = function (event) {
-            console.error('Error occurred in speech recognition: ', event.error);
-            statusDiv.textContent = 'Error: ' + event.error;
-        };
-
-        // Close dialog when speech recognition ends
-        recognition.onend = function () {
-            speechDialog.style.display = 'none';
-        };
-    </script> 
+    
 </body>
 </html>
 
