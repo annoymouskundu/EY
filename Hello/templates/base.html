@@ -104,6 +104,63 @@
             }
         </style>
 
+        <style>
+            .mic-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent; /* Transparent background */
+                border: none; /* No border */
+                padding: 0;
+                cursor: pointer;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                outline: none; /* Remove focus outline */
+                overflow: hidden; /* Prevent image overflow */
+                box-shadow: none; /* Remove extra shadows */
+            }
+            
+            /* Adjust Image Size */
+            .mic-button img {
+                width: 100%; /* Ensure the image fills the button */
+                height: 100%;
+                object-fit: contain; /* Keep the aspect ratio */
+            }
+            
+            /* Basic Styling for the Dialog Box */
+            #speech-dialog {
+                display: none;
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 20px;
+                width: 300px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+            
+            #status {
+                font-size: 18px;
+                font-weight: bold;
+                color: #28a745;
+            }
+            
+            #transcription {
+                margin-top: 10px;
+                font-size: 16px;
+                color: #555;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            
+
+        </style>
+
     </head>
     <body>
         <!-- Navbar -->
@@ -134,6 +191,11 @@
                             <a class="nav-link" href="{% url 'services' %}">Support</a>
                         </li>
                     </ul>
+                        <div class="mic-container ms-3">
+                            <button id="start-recording" class="start-recording btn btn-dark">
+                                <img src="/static/icon/microphone.png" alt="Mic" width="20" />
+                            </button>
+                        </div>
         
                     <!-- Search, Cart, and Mic icons -->
                     <div class="d-flex custom-icons-spacing align-items-center">
@@ -157,21 +219,76 @@
                                 </ul>
                             </div>
                         </div>
-        
+                        
                         <!-- Mic Icon -->
+                         <!--
                         <div class="mic-container ms-3">
-                            <button id="mic-btn" class="mic-button btn btn-dark">
+                            <button id="start-recording" class="start-recording btn btn-dark">
                                 <img src="/static/icon/microphone.png" alt="Mic" width="20" />
                             </button>
-                        </div>
+                        </div> -->
+                        
                     </div>
                 </div>
             </div>
         </nav>
+        <div id="speech-dialog">
+            <div id="status">Listening...</div>
+            <div id="transcription">Waiting for speech...</div>
+        </div>
+    </div>
+   
         
 
         <!-- Page Content -->
         {% block body %}{% endblock body %}
+
+        <script>
+            // Get DOM elements
+            const micButton = document.getElementById('start-recording');
+            const speechDialog = document.getElementById('speech-dialog');
+            const statusDiv = document.getElementById('status');
+            const transcriptionDiv = document.getElementById('transcription');
+    
+            // Initialize SpeechRecognition API (Web Speech API)
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = true;  // Keeps listening until stopped
+            recognition.interimResults = true;  // Show partial results
+    
+            micButton.addEventListener('click', function () {
+                // Show the dialog box
+                speechDialog.style.display = 'block';
+                statusDiv.textContent = 'Listening...';
+    
+                // Start speech recognition
+                recognition.start();
+            });
+    
+            recognition.onresult = function (event) {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+    
+                // Update the transcription text in the dialog box
+                transcriptionDiv.textContent = transcript;
+    
+                // Optionally, handle final results
+                if (event.results[0].isFinal) {
+                    statusDiv.textContent = 'Done listening';
+                }
+            };
+    
+            recognition.onerror = function (event) {
+                console.error('Error occurred in speech recognition: ', event.error);
+                statusDiv.textContent = 'Error: ' + event.error;
+            };
+    
+            // Close dialog when speech recognition ends
+            recognition.onend = function () {
+                speechDialog.style.display = 'none';
+            };
+        </script> 
 
         <!-- JS for Dropdown -->
         <script>
@@ -212,7 +329,7 @@
             }
           </style>
         
-          <script>
+       <script>
             document.getElementById("mic-btn").addEventListener("click", function () {
               alert("Listening...");
               fetch("/speech-to-text")
