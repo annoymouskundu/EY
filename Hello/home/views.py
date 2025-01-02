@@ -74,7 +74,7 @@ def upload_document(request):
     else:
         form = DocumentUploadForm()
 
-    return render(request, 'myapp/upload.html', {'form': form, 'extracted_text': extracted_text})  # Ensure template path
+    return render(request, 'templates/upload.html', {'form': form, 'extracted_text': extracted_text})  # Ensure template path
 
 
 def verify_aadhaar(request):
