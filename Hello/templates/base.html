@@ -105,61 +105,36 @@
         </style>
 
         <style>
-            .mic-button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: transparent; /* Transparent background */
-                border: none; /* No border */
-                padding: 0;
-                cursor: pointer;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                outline: none; /* Remove focus outline */
-                overflow: hidden; /* Prevent image overflow */
-                box-shadow: none; /* Remove extra shadows */
-            }
-            
-            /* Adjust Image Size */
-            .mic-button img {
-                width: 100%; /* Ensure the image fills the button */
-                height: 100%;
-                object-fit: contain; /* Keep the aspect ratio */
-            }
-            
-            /* Basic Styling for the Dialog Box */
-            #speech-dialog {
-                display: none;
-                position: fixed;
-                top: 20%;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: #fff;
-                border-radius: 8px;
-                padding: 20px;
-                width: 300px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-            }
-            
-            #status {
-                font-size: 18px;
-                font-weight: bold;
-                color: #28a745;
-            }
-            
-            #transcription {
-                margin-top: 10px;
-                font-size: 16px;
-                color: #555;
-                padding: 5px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-            
+         .mic-button {
+             display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent; /* Transparent background */
+        border: none; /* No border */
+        padding: 0;
+        cursor: pointer;
+        width: 100px; /* Increased size */
+        height: 100px; /* Increased size */
+        border-radius: 100%; /* Ensure it stays circular */
+        outline: none; /* Remove focus outline */
+        overflow: hidden; /* Prevent image overflow */
+        box-shadow: none; /* Remove extra shadows */
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+    }
 
-        </style>
+    .mic-button:hover {
+        background-color: rgba(0, 0, 0, 0.1); /* Light circular hover effect */
+    }
+
+    /* Adjust Image Size */
+    .mic-button img {
+        width: 70%; /* Adjusted to fit larger button */
+        height: 70%;
+        object-fit: contain; /* Keep the aspect ratio */
+        
+    }
+    </style>
+
 
     </head>
     <body>
