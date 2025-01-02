@@ -1,4 +1,11 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from django.http import JsonResponse  # Import JsonResponse for the API response
+import pytesseract
+from .forms import DocumentUploadForm
+from .models import UploadedDocument, User  # Import the new model for user details
+from django.core.files.storage import FileSystemStorage
+from PIL import Image
+import logging
 
 # Create your views here.
 def index(request):
