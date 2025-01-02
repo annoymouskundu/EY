@@ -14,36 +14,57 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Ensure the footer sticks to the bottom */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+       /* Ensure the footer sticks to the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
 
-        .content {
-            flex: 1;
-        }
+.content {
+    flex-grow: 1; /* This will make the content section take up remaining space */
+}
 
-        footer {
-            font-weight: bold; /* Make the text bold */
-        }
+footer {
+    font-weight: bold; /* Make the text bold */
+    margin-top: auto; /* Push the footer to the bottom */
+}
 
-      
     </style>
 </head>
 <body>
-    <!-- Content of the page -->
-    <div class="content">
-        <!-- Navigation bar with mic button -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">ReArc Motors</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
+    
+    <div class="container">
+        <h1>Find schemes based on categories</h1>
+        <div class="categories">
+            <div class="category">
+            <img src="icon-agriculture.png" alt="Agriculture">
+            <p class="count">373 Schemes</p>
+            <p class="title">Agriculture, Rural & Environment</p>
+        </div>
+        <div class="category">
+            <img src="icon-banking.png" alt="Banking">
+            <p class="count">213 Schemes</p>
+            <p class="title">Banking, Financial Services and Insurance</p>
+        </div>
+        <div class="category">
+            <img src="icon-business.png" alt="Business">
+            <p class="count">370 Schemes</p>
+            <p class="title">Business & Entrepreneurship</p>
+        </div>
+        <div class="category">
+            <img src="icon-education.png" alt="Education">
+            <p class="count">712 Schemes</p>
+            <p class="title">Education & Learning</p>
+        </div>
+        <div class="category">
+            <img src="icon-health.png" alt="Health">
+            <p class="count">200 Schemes</p>
+            <p class="title">Health & Wellness</p>
+        </div>
+    </div>
+</div>
 
         <!-- Speech recognition dialog box -->
         <div id="speech-dialog">
