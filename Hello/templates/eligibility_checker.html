@@ -1,0 +1,85 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Scheme_Checker {% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Eligibility</title>
+    <link rel="stylesheet" href="{% static 'styles/eligibility_checker.css' %}">
+    <script src="{% static 'js/eligibility_checker.js' %}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Check Your Eligibility</h1>
+            <p>Fill out the details below to check your eligibility for the scheme.</p>
+        </header>
+
+        <div class="form-container">
+            <form id="eligibility-form">
+                <!-- Name -->
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Aadhaar -->
+                <div class="input-group">
+                    <label for="aadhaar">Aadhaar Number</label>
+                    <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter your 12-digit Aadhaar Number" required>
+                    <a href="#">How to find your Aadhaar number?</a>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="input-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <!-- Family Income -->
+                <div class="input-group">
+                    <label for="income">Family Income (Annual)</label>
+                    <input type="number" id="income" name="income" placeholder="Enter your family's annual income" required>
+                </div>
+
+                <!-- Captcha -->
+                <div class="input-group">
+                    <label for="captcha">Captcha</label>
+                    <div class="captcha">
+                        <span>91WG</span>
+                        <a href="#">New Code</a>
+                        <a href="#">Audio Code</a>
+                    </div>
+                </div>
+
+                <!-- Captcha Input -->
+                <div class="input-group">
+                    <label for="captcha-input">Type the characters above in the field below</label>
+                    <input type="text" id="captcha-input" name="captcha-input" placeholder="Enter Captcha" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>Need more help? <a href="#">Get Support</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+
+
+
+{% endblock body %}
+
+

@@ -27,6 +27,11 @@ def contact(request):
 def login_view(request):
     return render(request,  'login.html')
 
-    # return HttpResponse("this is contact page")
+    # return HttpResponse("this is login page")
+    
+def login_view(request):
+    return render(request,  'eligibility_checker.html')
+
+    # return HttpResponse("this is eligibility checker page")
     
 
