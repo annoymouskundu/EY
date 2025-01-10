@@ -29,7 +29,7 @@ def login_view(request):
 
     # return HttpResponse("this is login page")
     
-def login_view(request):
+def eligibility_checker(request):
     return render(request,  'eligibility_checker.html')
 
     # return HttpResponse("this is eligibility checker page")
