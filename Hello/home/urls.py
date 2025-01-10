@@ -9,6 +9,6 @@ urlpatterns = [
     path("services", views.services, name='services'),
     path("contact/", views.contact, name='contact'),
     path("login/", views.login_view, name='login'),
-    path("upload_document/", views.upload_document, name='upload_document')
-    path('verify-aadhaar/', views.verify_aadhaar, name='verify_aadhaar')
+    path("upload_document/", views.upload_document, name='upload_document'),
+    path('verify-aadhaar/', views.verify_aadhaar, name='verify_aadhaar'),
 ]
